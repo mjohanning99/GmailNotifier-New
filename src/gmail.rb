@@ -27,7 +27,7 @@ end
 #Start the bash file, read the file it creates and find out what port the Arduino is connected to
 system("bash #{File.dirname(__FILE__)}/detect_serial.sh > serial")
 File.open("#{File.dirname(__FILE__)}/serial").each_line do |line|
-@serial_connection = line.slice(0..(line.index(' '))) if line.include?("Arduino")
+  @serial_connection = line.slice(0..(line.index(' '))) if line.include?("Arduino")
 end
 
 #FileUtils.rm("#{File.dirname(__FILE__)}/src/serial")
@@ -69,24 +69,24 @@ wait_time = 4
 
 #for an infinite amount of time
 loop do
-#get the number of unread messages in the inbox
-unread = gmail.inbox.count(:unread)
+  #get the number of unread messages in the inbox
+  unread = gmail.inbox.count(:unread)
 
-#lets us know that we've checked the unread messages
-puts "Checked unread."
+  #lets us know that we've checked the unread messages
+  puts "Checked unread."
 
-#check if the number of unread messages has increased
-if unread > prev_unread
-  #Write the subject of the last unread email to the serial port
-  port.write gmail.inbox.find(:unread).last.subject
+  #check if the number of unread messages has increased
+  if unread > prev_unread
+    #Write the subject of the last unread email to the serial port
+    port.write gmail.inbox.find(:unread).last.subject
 
-  #For debugging purposes
-  puts "Received email: \n" + gmail.inbox.find(:unread).last.subject
-end
+    #For debugging purposes
+    puts "Received email: \n" + gmail.inbox.find(:unread).last.subject
+  end
 
-#reset the number of unread emails
-prev_unread = unread
+  #reset the number of unread emails
+  prev_unread = unread
 
-#wait before we make another request to the Gmail servers
-sleep wait_time
+  #wait before we make another request to the Gmail servers
+  sleep wait_time
 end
