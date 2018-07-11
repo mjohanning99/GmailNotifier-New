@@ -29,6 +29,8 @@ Thirdly, you need an IDE that is capable of uploading code to your Arduino. The 
 Fourthly and lastly, you also need to download the LiquidCrystal library from [here](https://github.com/arduino-libraries/LiquidCrystal). The main purpose of this library is to be able to easily control LCDs.
 For further information on how to install libraries for your Arduino, please visit refer to the [official guide](https://www.arduino.cc/en/Guide/Libraries).
 
+-----
+
 ### Hardware
 As mentioned previously, you also require some hardware to be able to run this program properly.
 
