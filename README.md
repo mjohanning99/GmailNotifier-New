@@ -54,13 +54,13 @@ Please connect the pins as follows:
 |------|-------|
 VSS    |GND
 VDD    |5V
-V0     |Potentiometer
+V0     |10kΩ Potentiometer (which itself still needs to be connected to 5V and GND)
 RS     |Pin 7
 RW     |GND
 E      |Pin 8
 D4 - D7|Pin 9 - 12
 
-If you have a back-lit screen, you might also have to connect two more pins to GND and 5V. Your LCDs pins might be named differently. In that case, please refer to your LCDs data sheet.
+If you have a back-lit screen, you might also have to connect two more pins to GND and 5V. Your LCDs pins might be named differently. In that case, please refer to your LCDs data sheet. The back-light also might have to be connected to a 220Ω resistor.
 
 #### Active buzzer
 Another component is the active buzzer. It will make a sound whenever you receive an emails to notify you. The one I am using is the `TMB12A05`. Connected the negative side of the buzzer to GND and the postive side (which is usually marked by having a longer lead) to your Arduino's Pin 2.
