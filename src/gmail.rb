@@ -7,9 +7,9 @@ unless /linux/ =~ RUBY_PLATFORM then
 end
 
 #Requiring all the different gems
-gems = ['serialport', 'gmail', 'fileutils', 'colorize', 'socket']
+gems = ['serialport', 'gmail', 'fileutils', 'colorize', 'socket', 'gmail_login_information.rb']
 gems.each do |gem|
-  require gem
+  unless gem == 'gmail_login_information.rb' then require gem else require_relative gem end
 end
 
 #Checking internet connection to google.com (pinging it)
@@ -33,7 +33,7 @@ end
 #FileUtils.rm("#{File.dirname(__FILE__)}/src/serial")
 
 #Gmail username and password
-gmail = Gmail.connect("", "")
+gmail = Gmail.connect($gmail_username, $gmail_password)
 
 #count the number of unread messages
 begin
