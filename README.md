@@ -66,5 +66,9 @@ If you have a back-lit screen, you might also have to connect two more pins to G
 Another component is the active buzzer. It will make a sound whenever you receive an emails to notify you. The one I am using is the `TMB12A05`. Connected the negative side of the buzzer to GND and the postive side (which is usually marked by having a longer lead) to your Arduino's Pin 2.
 
 ## Setting up the software to work with your Gmail account
-Having done everything mentioned in the previous sections, it is now time to set up the program to work with your Gmail account. To do so, open the `src/gmail.rb` file and find the line that you can plug your gmail username and password into
+Having done everything mentioned in the previous sections, it is now time to set up the program to work with your Gmail account. To do so, open the `src/gmail_login_information.rb` file with your preferred text editor and enter your Gmail username and your password into the appropriate variables.
 
+__NOTE__: If you're using two-factor authentication (which I highly recommend you do), you will need to create an [app password](https://support.google.com/accounts/answer/185833?hl=en) which you can then use as your password for GmailNotifier.
+
+## Starting the program
+After completing all of the above steps, it is time to start the program. To do so, please change directories into the `src/` folder (`cd src`) and open the `gmail.rb` file by typing `ruby gmail.rb`. The program now automatically detects what serial port your Arduino is connected to. In the case of an error occurring, read it carefully and do what it says. If you still get an error afterwards, please file an Issue on this repository.
