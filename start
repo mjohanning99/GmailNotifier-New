@@ -1,3 +1,4 @@
 #!/bin/env ruby
+#Starting GmailNotifier with this file currently does /not/ work
 
 load "#{File.dirname(__FILE__)}/src/gmail.rb"
