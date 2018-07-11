@@ -1,4 +1,6 @@
 # Gmail Notifier
+![GmailNotifier](https://i.imgur.com/lNnF3K0.jpg)
+
 __DISCLAIMER:__ I cannot made responsible for any damage caused to your Arduino, yourself or any other of your possessions. I have tested this program myself, however, I cannot guarantee that it will work with you and I also cannot guarantee that it will not break. __Use at your own risk!__
 
 ## What is this?
