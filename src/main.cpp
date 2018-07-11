@@ -23,7 +23,6 @@ void notifingBeep() {
 }
 
 void got_email(String subject) {
-
   //Initial two beeps to alert user to incoming email
   notifingBeep();
   delay(200);
@@ -31,6 +30,8 @@ void got_email(String subject) {
 
   lcd.setCursor(0, 0);
   lcd.print("You've got mail!");
+  lcd.setCursor(0, 1);
+  lcd.print("Subject:");
   delay(5000);
 
   int str_len = subject.length() + 1;
