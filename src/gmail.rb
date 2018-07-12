@@ -1,6 +1,6 @@
 #!/bin/env ruby
 
-#Check if operating being used it Linux-based
+#Check if operating system being used it Linux-based
 unless /linux/ =~ RUBY_PLATFORM then
   puts "ERROR: Only Linux-based operating systems are currently supported"
   exit
@@ -28,9 +28,9 @@ end
 @serial_connection = String.new
 
 #Start the bash file, read the file it creates and find out what port the Arduino is connected to
-system("bash #{File.dirname(__FILE__)}/detect_serial.sh > serial")
+system("bash #{File.dirname(__FILE__)}/detect_serial.sh > #{File.dirname(__FILE__)}/serial")
 File.open("#{File.dirname(__FILE__)}/serial").each_line do |line|
-  @serial_connection = line.slice(0..(line.index(' '))) if line.include?("Arduino")
+  @serial_connection = line.slice(0..(line.index(' '))).gsub(' ', '') if line.include?("Arduino")
 end
 
 #Gmail username and password
@@ -57,7 +57,7 @@ unless @serial_connection.size > 0
 else
   puts "SUCCESS: ".colorize(:green) + "Arduino has been found"
   puts "Arduino is connected to: #{@serial_connection}"
-  port_file = @serial_connection.gsub(' ', '')
+  port_file = @serial_connection
 end
 
 #this must be same as the baud rate set on the Arduino
@@ -87,6 +87,8 @@ loop do
 
     #For debugging purposes
     puts "Received email: \n" + gmail.inbox.find(:unread).last.subject
+
+    puts "Checking emails ..."
   end
 
   #reset the number of unread emails
