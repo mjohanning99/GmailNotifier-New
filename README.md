@@ -55,7 +55,7 @@ Please connect the pins as follows:
 |------|-------|
 VSS    |GND
 VDD    |5V
-V0     |10kΩ Potentiometer (which itself still needs to be connected to 5V and GND)
+V0     |10kΩ potentiometer (which itself still needs to be connected to 5V and GND)
 RS     |Pin 7
 RW     |GND
 E      |Pin 8
@@ -64,7 +64,7 @@ D4 - D7|Pin 9 - 12
 If you have a back-lit screen, you might also have to connect two more pins to GND and 5V (these are named _A_ for 5V and _K_ for GND in my case). Furthermore, your LCDs pins might be named differently. In that case, please refer to your LCDs data sheet (just looking for the model number on your preferred search engine should yield results pretty quickly). The back-light also might have to be connected to a 220Ω resistor through 5V instead of going directly to 5V.
 
 #### Active buzzer
-Another component is the active buzzer. It will make a sound whenever you receive an emails to notify you. The one I am using is the `TMB12A05`. Connected the negative side of the buzzer to GND and the postive side (which is usually marked by having a longer lead) to your Arduino's Pin 2.
+Another component is the active buzzer. It will make a sound whenever you receive an emails to notify you. The one I am using is the `TMB12A05`. Connected the negative side of the buzzer to GND and the positive side (which is usually marked by having a longer lead) to your Arduino's Pin 2.
 
 ## Setting up the software to work with your Gmail account
 Having done everything mentioned in the previous sections, it is now time to set up the program to work with your Gmail account. To do so, open the `src/gmail_login_information.rb` file with your preferred text editor and enter your Gmail username and your password into the appropriate variables.
@@ -72,4 +72,6 @@ Having done everything mentioned in the previous sections, it is now time to set
 __NOTE__: If you're using two-factor authentication (which I highly recommend you do), you will need to create an [app password](https://support.google.com/accounts/answer/185833?hl=en) which you can then use as your password for GmailNotifier.
 
 ## Starting the program
-After completing all of the above steps, it is time to start the program. To do so, please change directories into the `src/` folder (`cd src`) and open the `gmail.rb` file by typing `ruby gmail.rb`. The program now automatically detects what serial port your Arduino is connected to. In the case of an error occurring, read it carefully and do what it says. If you still get an error afterwards, please file an Issue on this repository.
+After completing all the steps listed above, it is time to start the Ruby program on your computer. Firstly, please check whether your Arduino is correctly connected to your computer (if the buzzer beeps and the LCD displays some text upon connecting it to your PC, don't be alarmed. I'm not quite sure why this happens, but it goes away after a few seconds and it doesn't seem to impact the program at all).
+<br>
+After you ensured that the Arduino is connected properly to your computer, open the directory you've extracted this repository into and start the `start` file by typing `./start` or `ruby start` into your Terminal while being in the directory. The program now checks for an active internet connection, checks whether it can connect to your Gmail account and it will automatically determine what serial port your Arduino is connected to.
