@@ -1,5 +1,23 @@
 #!/bin/env ruby
 
+=begin
+Copyright 2018 Marvin Johanning
+This file is part of GmailNotifier.
+
+GmailNotifier is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+GmailNotifier is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with GmailNotifier.  If not, see <http://www.gnu.org/licenses/>.
+=end
+
 #Check if operating system being used it Linux-based
 unless /linux/ =~ RUBY_PLATFORM then
   puts "ERROR: Only Linux-based operating systems are currently supported"
@@ -69,7 +87,12 @@ stop_bits = 1
 parity = SerialPort::NONE
 
 #create a SerialPort object using each of the bits of information
-port = SerialPort.new(port_file, baud_rate, data_bits, stop_bits, parity)
+begin
+  port = SerialPort.new(port_file, baud_rate, data_bits, stop_bits, parity)
+rescue Errno::EBUSY
+  puts "ERROR: ".colorize(:red) + "The Arduino seems to be busy at the moment. This happens frequently whenever the Arduino has been plugged into a computer. Please wait a while and try again"
+  exit
+end
 
 wait_time = 4
 
